@@ -16,13 +16,9 @@ regioes_estados = {
     "CENTRO-OESTE": ["DF", "GO", "MT", "MS"]
 }
 
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-
 st.set_page_config(layout="wide")
 
-st.title("📊 Análise de Combustíveis - ANP")
+st.title("Análise de Combustíveis - ANP")
 
 ## Sidebar
 
@@ -85,10 +81,10 @@ regiao_mais_cara = (
 
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric("💰 Média Geral", f"R$ {media_geral:.2f}")
-col2.metric("⛽ Postos", total_postos)
-col3.metric("🏷️ Bandeiras", total_bandeiras)
-col4.metric("📍 Região mais cara", regiao_mais_cara)
+col1.metric("Média Geral", f"R$ {media_geral:.2f}")
+col2.metric("Postos", total_postos)
+col3.metric("Bandeiras", total_bandeiras)
+col4.metric("Região mais cara", regiao_mais_cara)
 
 st.divider()
 
@@ -97,7 +93,7 @@ col1, col2 = st.columns(2)
 
 #  Concorrência
 with col1:
-    st.subheader("📊 Preço vs Concorrência")
+    st.subheader("Preço vs Concorrência")
 
     df_grafico1 = df_resultado.groupby("Regiao - Sigla").agg(
         media_valor=("Valor de Venda", "mean"),
@@ -119,7 +115,7 @@ with col1:
 
 # Postos
 with col2:
-    st.subheader("📊 Preço vs Postos")
+    st.subheader("Preço vs Postos")
 
     df_grafico2 = df_resultado.groupby("Regiao - Sigla").agg(
         media_valor=("Valor de Venda", "mean"),
@@ -166,17 +162,15 @@ st.divider()
 
 ## Top 5 bandeiras
 
-st.subheader("🏷️ Top 5 Bandeiras")
+st.subheader("Top 5 Bandeiras")
 
 df_bandeiras = df_resultado["Bandeira"].value_counts().head(5)
 st.bar_chart(df_bandeiras)
 
 st.divider()
 
-# =========================
-# 📊 DISTRIBUIÇÃO DE PREÇOS
-# =========================
-st.subheader("📊 Distribuição de Preços")
+
+st.subheader("Distribuição de Preços")
 
 fig, ax = plt.subplots(figsize=(7,3))
 ax.hist(df_resultado["Valor de Venda"], bins=20)
@@ -184,50 +178,42 @@ st.pyplot(fig)
 
 st.divider()
 
-# =========================
-# 📉 VARIAÇÃO DE PREÇOS
-# =========================
-st.subheader("📉 Variação de Preços por Região")
+## Variação por região
+st.subheader("Variação de Preços por Região")
 
 df_var = df_resultado.groupby("Regiao - Sigla")["Valor de Venda"].std()
 st.bar_chart(df_var)
 
 st.divider()
 
-# =========================
-# 🧠 CORRELAÇÃO
-# =========================
-st.subheader("🧠 Correlação")
 
-df_corr = df_resultado.groupby("Regiao - Sigla").agg(
-    media=("Valor de Venda", "mean"),
-    concorrencia=("Bandeira", "nunique"),
-    postos=("Bandeira", "count")
-)
+# st.subheader("Correlação")
 
-st.dataframe(df_corr.corr())
+# df_corr = df_resultado.groupby("Regiao - Sigla").agg(
+#     media=("Valor de Venda", "mean"),
+#     concorrencia=("Bandeira", "nunique"),
+#     postos=("Bandeira", "count")
+# )
 
-st.caption("Correlação valida a hipótese: postos impactam mais que concorrência.")
+# st.dataframe(df_corr.corr())
 
-st.divider()
+# st.caption("Correlação valida a hipótese: postos impactam mais que concorrência.")
 
-# =========================
-# 📌 DESTAQUES
-# =========================
-st.subheader("📌 Destaques")
+# st.divider()
 
-maior_preco = df_resultado["Valor de Venda"].max()
-menor_preco = df_resultado["Valor de Venda"].min()
+## Maior e menor valor
+# st.subheader("Destaques")
 
-st.write(f"🔺 Maior preço: R$ {maior_preco:.2f}")
-st.write(f"🔻 Menor preço: R$ {menor_preco:.2f}")
+# maior_preco = df_resultado["Valor de Venda"].max()
+# menor_preco = df_resultado["Valor de Venda"].min()
 
-st.divider()
+# st.write(f"Maior preço: R$ {maior_preco:.2f}")
+# st.write(f"Menor preço: R$ {menor_preco:.2f}")
 
-# =========================
-# 📋 TABELAS
-# =========================
-st.subheader("🔺 Maiores Preços")
+# st.divider()
+
+## tabela top 5 menor e maior
+st.subheader("Maiores Preços")
 
 estatistica = df_resultado.groupby(
     ["Regiao - Sigla", "Estado - Sigla"]
@@ -239,6 +225,6 @@ estatistica = df_resultado.groupby(
 
 st.dataframe(estatistica.sort_values(by="media", ascending=False).head(5))
 
-st.subheader("🔻 Menores Preços")
+st.subheader("Menores Preços")
 
 st.dataframe(estatistica.sort_values(by="media", ascending=True).head(5))
