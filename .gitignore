@@ -1,0 +1,8 @@
+# Dados brutos (cerca de 1 GB): baixe com python -m src.extract
+data/raw/
+
+# Ambiente Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
