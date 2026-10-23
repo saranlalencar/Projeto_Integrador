@@ -34,6 +34,22 @@ def test_filtro_por_estado():
     assert not app.exception
 
 
+def test_ranking_nao_repete_itens_quando_ha_poucos_estados():
+    nacional = abrir()
+    assert len(nacional.dataframe) == 3  # 5 mais caros, 5 mais baratos, cidades do etanol
+    regiao = abrir()
+    regiao.sidebar.selectbox[1].set_value("N").run()
+    assert not regiao.exception
+    assert len(regiao.dataframe) == 2  # 7 estados cabem numa tabela só
+
+
+def test_estado_mostra_ranking_de_cidades():
+    app = abrir()
+    app.sidebar.selectbox[2].set_value("CE").run()
+    assert not app.exception
+    assert app.dataframe[0].value.index.name == "Cidade"
+
+
 def test_periodo_de_um_mes_nao_quebra():
     app = abrir()
     ultimo = pd.to_datetime(pd.read_parquet(PROCESSED_DIR / "mensal_uf.parquet")["mes"]).max()

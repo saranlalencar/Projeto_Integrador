@@ -32,12 +32,14 @@ Dados até jun/2026, gasolina comum, média Brasil.
 
 ## O que tem no painel
 
-| Aba | Conteúdo |
-| --- | --- |
-| Visão geral | Preço atual de gasolina, etanol e diesel S10 com variação no mês, paridade etanol/gasolina, preço nominal × real, mapa por estado, ranking de UFs |
-| O que move o preço | Bomba, Brent em reais e IPCA no mesmo índice (base 100), correlação com defasagem, dispersão entre estados antes e depois do ICMS fixo |
-| Etanol × gasolina | Mapa da paridade por UF, evolução da paridade, cidades onde o etanol mais compensa |
-| Postos e bandeiras | Prêmio por bandeira em relação à branca, postos × preço por município, distribuição de preços, variação dentro de cada região |
+Cada aba abre com a pergunta que responde, e cada gráfico tem um título que já é a conclusão (calculada com os dados do filtro escolhido) e uma linha de "como ler".
+
+| Aba | Pergunta | Conteúdo |
+| --- | --- | --- |
+| Quanto custa | O preço subiu de verdade? | Preço atual de gasolina, etanol e diesel S10, preço nominal × corrigido pela inflação, mapa por estado, ranking que se adapta ao filtro (estados do Brasil, estados da região ou cidades do estado) |
+| O que move o preço | O que faz o preço subir ou cair? | Bomba, Brent em reais e IPCA no mesmo índice, atraso entre petróleo e bomba, diferença entre estados antes e depois do ICMS fixo |
+| Etanol ou gasolina? | Qual compensa? | Mapa da paridade por estado, evolução da paridade, 10 cidades onde o etanol mais compensa |
+| Bandeiras e concorrência | Bandeira e concorrência mudam o preço? | Quanto cada bandeira cobra a mais que a branca na mesma cidade, postos × preço por cidade |
 
 Filtros: produto, região, estado e período.
 
