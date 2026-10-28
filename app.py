@@ -10,7 +10,7 @@ import streamlit as st
 from src import metrics
 from src.config import ESTADOS, PARIDADE_LIMITE, PROCESSED_DIR, REGIOES
 
-st.set_page_config(page_title="Combustíveis no Brasil | ANP", page_icon="⛽", layout="wide")
+st.set_page_config(page_title="Combustíveis no Brasil | ANP", page_icon=":material/local_gas_station:", layout="wide")
 
 AZUL, LARANJA, VERDE, CINZA, TINTA = "#2a78d6", "#eb6834", "#1baf7a", "#76848b", "#0f1d26"
 REPOSITORIO = "https://github.com/saranlalencar/Projeto_Integrador"
