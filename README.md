@@ -8,7 +8,7 @@
 Análise de **5,46 milhões de preços de combustíveis** coletados pela ANP em postos de todo o Brasil entre janeiro de 2020 e junho de 2026, cruzados com inflação (IPCA), dólar e petróleo Brent. O painel mostra quanto o preço subiu de verdade, o que move o preço na bomba, onde o etanol compensa e quanto se paga a mais por bandeira.
 
 <!-- Depois do deploy, coloque aqui: **[Abrir o painel online](https://SEU-APP.streamlit.app)** -->
-<!-- E um GIF de ~10 s navegando pelas abas: ![Painel](docs/painel.gif) -->
+<!-- E um GIF de ~10 s rolando a reportagem e trocando um filtro: ![Painel](docs/painel.gif) -->
 
 ## Perguntas de negócio
 
@@ -32,16 +32,17 @@ Dados até jun/2026, gasolina comum, média Brasil.
 
 ## O que tem no painel
 
-Cada aba abre com a pergunta que responde, e cada gráfico tem um título que já é a conclusão (calculada com os dados do filtro escolhido) e uma linha de "como ler".
+O painel é uma **reportagem de dados** em página única, no formato de sites de jornalismo de dados: manchete com a conclusão principal, resumo "Em 30 segundos", painel de indicadores e capítulos numerados. Cada capítulo tem título-conclusão, parágrafo de contexto, gráfico, legenda "como ler" e um quadro "No seu bolso" que traduz o número em reais por tanque. Todos os textos são calculados a partir dos filtros, que ficam numa barra fixa no topo (combustível, região, estado e período).
 
-| Aba | Pergunta | Conteúdo |
+| Parte | Pergunta | Conteúdo |
 | --- | --- | --- |
-| Quanto custa | O preço subiu de verdade? | Preço atual de gasolina, etanol e diesel S10, preço nominal × corrigido pela inflação, mapa por estado, ranking que se adapta ao filtro (estados do Brasil, estados da região ou cidades do estado) |
-| O que move o preço | O que faz o preço subir ou cair? | Bomba, Brent em reais e IPCA no mesmo índice, atraso entre petróleo e bomba, diferença entre estados antes e depois do ICMS fixo |
-| Etanol ou gasolina? | Qual compensa? | Mapa da paridade por estado, evolução da paridade, 10 cidades onde o etanol mais compensa |
-| Bandeiras e concorrência | Bandeira e concorrência mudam o preço? | Quanto cada bandeira cobra a mais que a branca na mesma cidade, postos × preço por cidade |
-
-Filtros: produto, região, estado e período.
+| Painel do mês | Quanto custa agora? | Gasolina, etanol, diesel S10 e paridade com minigráficos de 12 meses; postos, coletas, menor e maior preço |
+| 1. Preço real | Subiu de verdade? | Preço nominal × corrigido pela inflação, custo de um tanque antes e agora |
+| 2. Geografia | Onde é mais caro? | Mapa por estado, posição do estado escolhido, ranking que se adapta ao filtro (estados do Brasil, da região ou cidades do estado) |
+| 3. O que move o preço | O que faz o preço subir ou cair? | Bomba, Brent em reais e IPCA no mesmo índice, atraso entre petróleo e bomba, diferença entre estados antes e depois do ICMS fixo |
+| 4. Etanol ou gasolina | Qual compensa? | Mapa da paridade, evolução da paridade, custo de 1.000 km com cada combustível, 10 cidades onde o etanol mais compensa |
+| 5. Bandeiras | Bandeira e concorrência mudam o preço? | Quanto cada bandeira cobra a mais que a branca na mesma cidade, postos × preço por cidade |
+| Como foi feito | De onde vêm os números? | Metodologia, glossário e limitações |
 
 ## Como funciona
 
